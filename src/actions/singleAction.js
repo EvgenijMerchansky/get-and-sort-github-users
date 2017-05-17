@@ -1,9 +1,4 @@
 import axios from 'axios';
-// import React from 'react';
-// import { BrowserRouter as Link } from 'react-router-dom';
-
-// import styles from './singleAction.scss';
-
 
 export const query = (arg) => {
   return function(dispatch){
@@ -19,14 +14,14 @@ export const query = (arg) => {
   }
 }
 
-export const change = (textValue, users) => {
-  return function(dispatch){
+export const change = (textValue, noFilterUsers) => {
+
+  const change = noFilterUsers.filter((elem, index) => {
     const value = textValue.toLowerCase();
-    // console.log(value);
-    const change = users.filter((elem, index) => {
-      // console.log(elem.login)
-      return ~elem.login.toLowerCase().indexOf(textValue)
-    })
+    return ~elem.props.children.toLowerCase().indexOf(value)
+  })
+  
+  return function(dispatch){
     dispatch({
       type: 'CHANGE',
       payload: change,
