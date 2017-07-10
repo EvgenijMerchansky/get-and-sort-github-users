@@ -11,7 +11,7 @@ class App extends Component{
 
       const noFilterUsers = users.map((elem, index) => {
         return (
-          <li key={index}>{elem.login}</li>
+          <button key={index}>{elem.login}</button>
         )
       })
 
